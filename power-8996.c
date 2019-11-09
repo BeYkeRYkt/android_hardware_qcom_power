@@ -321,6 +321,11 @@ static int process_interaction_hint(void *data)
         }
     }
 
+    // Do nothing if it is not scrolling/flinging
+    if (duration == kMinInteractiveDuration) {
+        return;
+    }
+
     clock_gettime(CLOCK_MONOTONIC, &cur_boost_timespec);
 
     elapsed_time = calc_timespan_us(s_previous_boost_timespec, cur_boost_timespec);
