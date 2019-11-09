@@ -315,9 +315,9 @@ static int process_interaction_hint(void *data)
 
     if (data) {
         int input_duration = *((int*)data);
-        if (input_duration > duration) {
-            duration = (input_duration > kMaxInteractiveDuration) ?
-                    kMaxInteractiveDuration : input_duration;
+        if (input_duration > 0) {
+            duration = ((input_duration + 160) > kMaxInteractiveDuration) ?
+                    kMaxInteractiveDuration : (input_duration + 160);
         }
     }
 
